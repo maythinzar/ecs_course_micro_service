@@ -1,5 +1,5 @@
-# Prerequisites
-*.dll
-*.pdb
-
-
+.vs/
+*bin/
+*obj/
+*Logs
+*.cache

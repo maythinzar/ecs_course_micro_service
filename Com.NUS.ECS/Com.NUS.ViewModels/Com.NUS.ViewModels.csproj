@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.MrIT.Common\Com.NUS.Common.csproj" />
+    <ProjectReference Include="..\Com.NUS.Common\Com.NUS.Common.csproj" />
+  </ItemGroup>
+
+</Project>

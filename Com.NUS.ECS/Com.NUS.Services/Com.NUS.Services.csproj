@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Com.MrIT.Common\Com.NUS.Common.csproj" />
+    <ProjectReference Include="..\Com.MrIT.DataRepository\Com.NUS.DataRepository.csproj" />
+    <ProjectReference Include="..\Com.MrIT.DBEntities\Com.NUS.DBEntities.csproj" />
+    <ProjectReference Include="..\Com.MrIT.ViewModels\Com.NUS.ViewModels.csproj" />
+    <ProjectReference Include="..\Com.NUS.Common\Com.NUS.Common.csproj" />
+    <ProjectReference Include="..\Com.NUS.DataRepository\Com.NUS.DataRepository.csproj" />
+    <ProjectReference Include="..\Com.NUS.DBEntities\Com.NUS.DBEntities.csproj" />
+    <ProjectReference Include="..\Com.NUS.ViewModels\Com.NUS.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MrUserServices\" />
+  </ItemGroup>
+
+</Project>
