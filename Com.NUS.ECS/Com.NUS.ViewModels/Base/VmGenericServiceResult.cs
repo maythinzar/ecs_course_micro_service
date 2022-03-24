@@ -7,6 +7,8 @@ namespace Com.MrIT.ViewModels
     public class VmGenericServiceResult : ViewModelBase
     {
         public bool IsSuccess { get; set; }
+
+        public long ReturnId { get; set; }
         public string MessageToUser { get; set; }
         public Exception Error { get; set; }
     }

@@ -5,7 +5,7 @@ namespace Com.MrIT.DBEntities
     public class GenericEntity
     {
         //[Key]
-        public int ID { get; set; }
+        public long Id { get; set; }
 
         public bool Active { get; set; }
 

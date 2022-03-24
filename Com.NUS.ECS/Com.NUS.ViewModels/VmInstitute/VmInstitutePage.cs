@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Com.MrIT.ViewModels
 {
-    public class VmMrUserPage
+    public class VmInstitutePage
     {
-        public PageResult<VmMrUser> Result { get; set; }
+        public PageResult<VmInstitute> Result { get; set; }
     }
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Com.MrIT.DataRepository
 {
-    public interface IEmailTemplateRepository : IGenericRepository<EmailTemplate>
+    public interface IInstituteRepository : IGenericRepository<Institute>
     {
-        EmailTemplate GetByName(string name);
+
     }
 }

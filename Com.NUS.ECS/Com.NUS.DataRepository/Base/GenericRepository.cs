@@ -37,29 +37,22 @@ namespace Com.MrIT.DataRepository
             return  entities.AsNoTracking().ToList();
         }
 
-        public async Task<T> Get(int id)
+        public  T  Get(int id)
         {
             repoLogger.LogDebug("Get by id " + id, null);
 
-            var result = await entities.AsNoTracking().SingleOrDefaultAsync(s => s.ID == id);
+            var result =   entities.AsNoTracking().SingleOrDefault(s => s.Id == id);
 
             return result;
         }
 
-        public T GetWithoutAsync(int id)
-        {
-            repoLogger.LogDebug("Get by id " + id, null);
-
-            var result = entities.AsNoTracking().SingleOrDefault(s => s.ID == id);
-
-            return result;
-        }
+         
 
         public  T GetLastRow()
         {
             repoLogger.LogDebug("Get Last Row ", null);
 
-            var result =  entities.OrderByDescending(e => e.ID).AsNoTracking().FirstOrDefault();
+            var result =  entities.OrderByDescending(e => e.Id).AsNoTracking().FirstOrDefault();
 
             return result;
         }
@@ -87,45 +80,7 @@ namespace Com.MrIT.DataRepository
             entities.Add(entity);
             var result = entity;
             this.Commit();
-            //RecordChangeLog(entity, "Create");
-
-            string tableID = entity.ID.ToString();
-            try
-            {
-                var sourceProperties = entity.GetType().GetProperties();
-                foreach (var sourceProperty in sourceProperties)
-                {
-                    var dbChangeLog = new ChangeLog();
-                    dbChangeLog.TableName = typeof(T).FullName;
-                    dbChangeLog.FieldName = sourceProperty.Name;
-                    dbChangeLog.Action = "Create";
-                    dbChangeLog.TableID = tableID;
-                    if (sourceProperty.GetValue(entity) != null)
-                    {
-                        if (sourceProperty.PropertyType.FullName == "System.Byte[]")
-                        {
-                            dbChangeLog.FieldValue = Convert.ToBase64String((byte[])sourceProperty.GetValue(entity));
-                        }
-                        else
-                        {
-                            dbChangeLog.FieldValue = sourceProperty.GetValue(entity).ToString();
-                        }
-
-                    }
-                    dbChangeLog.CreatedBy = dbChangeLog.ModifiedBy = entity.ModifiedBy;
-                    dbChangeLog.CreatedOn = dbChangeLog.ModifiedOn = DateTime.Now;
-                    dbChangeLog.SystemActive = true;
-                    dbChangeLog.Active = true;
-
-                    this.DbContext.ChangeLogs.Add(dbChangeLog);
-                    this.Commit();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                string err = ex.Message;
-            }
+           
 
             return result;
         }
@@ -137,7 +92,7 @@ namespace Com.MrIT.DataRepository
                 repoLogger.LogError("Cannot insert entiry as entity is null", null);
                 throw new ArgumentNullException("entity");
             }
-            var oldEntity = this.entities.Where(e => e.ID == entity.ID).AsNoTracking().SingleOrDefault();
+             
 
             entity.ModifiedOn = DateTime.Now;
 
@@ -145,75 +100,7 @@ namespace Com.MrIT.DataRepository
             //entities.Update(entity).State = EntityState.Modified;
             var result = entity;
             this.Commit();
-            //RecordChangeLog(entity, "Update");
-
-            string tableID = entity.ID.ToString();
-            try
-            {
-                var sourceProperties = entity.GetType().GetProperties();
-                var oldSourceProperties = oldEntity.GetType().GetProperties();
-                foreach (var sourceProperty in sourceProperties)
-                {
-                    foreach (var oldSourceProperty in oldSourceProperties)
-                    {
-                        if (sourceProperty.Name == oldSourceProperty.Name)
-                        {
-                            var newValue = "";
-                            if (sourceProperty.GetValue(entity) != null)
-                            {
-                                if (sourceProperty.PropertyType.FullName == "System.Byte[]")
-                                {
-                                    newValue = Convert.ToBase64String((byte[])sourceProperty.GetValue(entity));
-                                }
-                                else
-                                {
-                                    newValue = sourceProperty.GetValue(entity).ToString();
-                                }
-
-                            }
-
-                            var oldValue = "";
-                            if (oldSourceProperty.GetValue(oldEntity) != null)
-                            {
-                                oldValue = oldSourceProperty.GetValue(oldEntity).ToString();
-                            }
-                            if (oldSourceProperty.GetValue(oldEntity) != null)
-                            {
-                                if (oldSourceProperty.PropertyType.FullName == "System.Byte[]")
-                                {
-                                    oldValue = Convert.ToBase64String((byte[])oldSourceProperty.GetValue(oldEntity));
-                                }
-                                else
-                                {
-                                    oldValue = oldSourceProperty.GetValue(oldEntity).ToString();
-                                }
-
-                            }
-
-                            if (newValue != oldValue)
-                            {
-                                var dbChangeLog = new ChangeLog();
-                                dbChangeLog.TableName = typeof(T).FullName;
-                                dbChangeLog.TableID = tableID;
-                                dbChangeLog.FieldName = sourceProperty.Name;
-                                dbChangeLog.Action = "Update";
-                                dbChangeLog.FieldValue = newValue;
-                                dbChangeLog.CreatedBy = dbChangeLog.ModifiedBy = entity.ModifiedBy;
-                                dbChangeLog.CreatedOn = dbChangeLog.ModifiedOn = DateTime.Now;
-                                dbChangeLog.Active = true;
-                                dbChangeLog.SystemActive = true;
-
-                                this.DbContext.ChangeLogs.Add(dbChangeLog);
-                                this.Commit();
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                string err = ex.Message;
-            }
+           
 
             return result;
         }
@@ -229,15 +116,15 @@ namespace Com.MrIT.DataRepository
             entities.Remove(entity);
         }
 
-        public virtual async Task<PageResult<T>> GetPage(string keyword, int page, int totalRecords = 10)
+        public virtual  PageResult<T>  GetPage(string keyword, int page, int totalRecords = 10)
         {
-            var records = await entities.Where(e => e.SystemActive == true && e.Active == true)
+            var records =   entities.Where(e => e.SystemActive == true && e.Active == true)
                            .OrderBy(e => e.CreatedOn)
                            .Skip((totalRecords * page) - totalRecords)
                            .Take(totalRecords).AsNoTracking()
-                           .ToListAsync<T>();
+                           .ToList <T>();
 
-            int count = await entities.CountAsync(e => e.SystemActive == true && e.Active == true);
+            int count =   entities.Count (e => e.SystemActive == true && e.Active == true);
 
             var result = new PageResult<T>()
             {

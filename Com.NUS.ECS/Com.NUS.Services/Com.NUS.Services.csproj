@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Com.NUS.ViewModels\Com.NUS.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MrUserServices\" />
-  </ItemGroup>
-
 </Project>

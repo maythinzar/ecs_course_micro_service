@@ -5,7 +5,7 @@ namespace Com.MrIT.ViewModels
 {
     public class ViewModelItemBase
     {
-        public int ID
+        public long Id
         {
             get;
             set;

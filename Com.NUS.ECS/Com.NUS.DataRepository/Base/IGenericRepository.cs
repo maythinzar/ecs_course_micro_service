@@ -11,13 +11,13 @@ namespace Com.MrIT.DataRepository
         T Update(T entity);
         void Delete(T entity);
 
-        Task<T> Get(int id);
+         T  Get(int id);
 
-        T GetWithoutAsync(int id);
+        
 
         IEnumerable<T> GetActiveAll();
         IEnumerable<T> GetAll();
-        Task<PageResult<T>> GetPage(string keyword, int page, int totalRecords = 10);
+        PageResult<T> GetPage(string keyword, int page, int totalRecords = 10);
         T GetLastRow();
 
 
