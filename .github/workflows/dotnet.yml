@@ -18,8 +18,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
+      working-directory: ./Com.NUS.ECS
       run: dotnet restore
     - name: Build
+      working-directory: ./Com.NUS.ECS
       run: dotnet build --no-restore
     - name: Test
+      working-directory: ./Com.NUS.ECS
       run: dotnet test --no-build --verbosity normal
