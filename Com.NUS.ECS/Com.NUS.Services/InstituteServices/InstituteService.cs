@@ -29,17 +29,14 @@ namespace Com.MrIT.Services
                 var dbInstitute = new Institute();
                 Copy<VmInstitute, Institute>(vmInstitute, dbInstitute);
 
-                if (_repoInstitute == null) //for test case
-                {
-                    result.IsSuccess = true;
-                    result.ReturnId = 0;
-                    return result;
-                }
-
                 dbInstitute = _repoInstitute.Add(dbInstitute);
 
                 result.IsSuccess = true;
-                result.ReturnId = dbInstitute.Id;
+
+                if(dbInstitute != null)
+                {
+                    result.ReturnId = dbInstitute.Id;
+                } 
             }
             catch (Exception ex)
             {
