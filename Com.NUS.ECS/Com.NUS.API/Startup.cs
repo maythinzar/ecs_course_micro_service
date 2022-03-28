@@ -17,7 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Serilog.Extensions.Logging;
-
+using System.Text.Json;
+using Com.MrIT.DataRepository;
+using Com.MrIT.Services;
 
 namespace Com.NUS.API
 {
@@ -33,29 +35,12 @@ namespace Com.NUS.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-
-            services.AddDistributedMemoryCache();
-            services.AddMvc().AddSessionStateTempDataProvider();
-            services.AddSession(options =>
-            {
-                // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromHours(10);
-                options.Cookie.HttpOnly = true;
-            });
-
-
-
             services.AddControllers().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
 
-            
-
             services.AddMvc();
-
-            services.AddHttpContextAccessor();
-            services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
-
+           
             RegisterForDependencyInjection(services);
 
             var sqlConnectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -75,11 +60,11 @@ namespace Com.NUS.API
         private void RegisterForDependencyInjection(IServiceCollection services)
         {
             //// Register for repository classes
-            //services.AddScoped<IBranchRepository, BranchRepository>();
+            services.AddScoped<IInstituteRepository, InstituteRepository>();
 
 
             //// Register for logic classes
-            //services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IInstituteService, InstituteService>();
 
         }
 

@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.NUS.DataRepository", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Test", "4.Test", "{5C4DE5B3-A263-4783-B242-1F9C8572B2AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.NUS.TestXUnit", "Com.NUS.TestXUnit\Com.NUS.TestXUnit.csproj", "{5E84EACC-C9D7-4CAE-BA31-C87161DF5489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.NUS.TestXUnit", "Com.NUS.TestXUnit\Com.NUS.TestXUnit.csproj", "{5E84EACC-C9D7-4CAE-BA31-C87161DF5489}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

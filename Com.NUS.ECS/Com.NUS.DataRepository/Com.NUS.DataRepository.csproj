@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Com.MrIT.Common\Com.NUS.Common.csproj" />
-    <ProjectReference Include="..\Com.MrIT.DBEntities\Com.NUS.DBEntities.csproj" />
     <ProjectReference Include="..\Com.NUS.Common\Com.NUS.Common.csproj" />
     <ProjectReference Include="..\Com.NUS.DBEntities\Com.NUS.DBEntities.csproj" />
   </ItemGroup>
