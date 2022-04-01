@@ -38,7 +38,13 @@ namespace Com.NUS.API
             
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddControllers().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
-
+             
+            services.AddApiVersioning(config =>
+            {
+                config.DefaultApiVersion = new ApiVersion(1, 0);
+                config.AssumeDefaultVersionWhenUnspecified = true;
+                config.ReportApiVersions = true;
+            });
             services.AddMvc();
            
             RegisterForDependencyInjection(services);

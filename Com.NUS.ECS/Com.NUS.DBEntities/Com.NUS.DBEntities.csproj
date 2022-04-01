@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="DBChanges\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>

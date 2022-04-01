@@ -23,6 +23,7 @@ namespace Com.NUS.API
                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                     logging.AddConsole();
                     logging.AddDebug();
+                    logging.AddEventLog();
                     logging.AddEventSourceLogger();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
