@@ -35,10 +35,10 @@ namespace Com.NUS.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddControllers().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
-             
+
             services.AddApiVersioning(config =>
             {
                 config.DefaultApiVersion = new ApiVersion(1, 0);
@@ -46,7 +46,7 @@ namespace Com.NUS.API
                 config.ReportApiVersions = true;
             });
             services.AddMvc();
-           
+
             RegisterForDependencyInjection(services);
 
             var sqlConnectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -59,7 +59,7 @@ namespace Com.NUS.API
                 )
             );
 
-           
+
 
         }
 
@@ -67,6 +67,20 @@ namespace Com.NUS.API
         {
             //// Register for repository classes
             services.AddScoped<IInstituteRepository, InstituteRepository>();
+            services.AddScoped<ICareerRepository, CareerRepository>();
+            services.AddScoped<ICareerPathRepository, CareerPathRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseCareerRepository, CourseCareerRepository>();
+            services.AddScoped<ICourseCategoryRepository, CourseCategoryRepository>();
+            services.AddScoped<ICourseInstructorRepository, CourseInstructorRepository>();
+            services.AddScoped<ICoursePrerequisiteRepository, CoursePrerequisiteRepository>();
+            services.AddScoped<ICourseRatingRepository, CourseRatingRepository>();
+            services.AddScoped<ICourseTagRepository, CourseTagRepository>();
+            services.AddScoped<ICourseTypeRepository, CourseTypeRepository>();
+            services.AddScoped<IInstituteRatingRepository, InstituteRatingRepository>();
+            services.AddScoped<IInstituteUserRepository, InstituteUserRepository>();
+            services.AddScoped<IInstructorRepository, InstructorRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
 
 
             //// Register for logic classes
