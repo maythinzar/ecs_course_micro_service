@@ -48,12 +48,72 @@ namespace Com.MrIT.Services
             }
             catch (Exception ex)
             {
+                _logger.LogError("Error Log: AddInstitute:" + ex.Message);
                 result.IsSuccess = false;
                 result.ReturnId = 0;
                 result.Error = ex;
             }  
             return result;
         }
+
+        public VmGenericServiceResult UpdateInstitute(VmInstitute vmInstitute)
+        {
+
+            var result = new VmGenericServiceResult();
+            try
+            {
+                var dbInstitute = new Institute();
+                Copy<VmInstitute, Institute>(vmInstitute, dbInstitute);
+
+                dbInstitute = _repoInstitute.Update(dbInstitute);
+
+                result.IsSuccess = true;
+
+                if (dbInstitute != null)
+                {
+                    result.ReturnId = dbInstitute.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error Log: AddInstitute:" + ex.Message);
+                result.IsSuccess = false;
+                result.ReturnId = 0;
+                result.Error = ex;
+            }
+            return result;
+        }
+
+
+        public VmGenericServiceResult DeleteInstitute(long id, string modifiedBy)
+        {
+
+            var result = new VmGenericServiceResult();
+            try
+            {
+                var dbInstitute = _repoInstitute.Get(id);
+                dbInstitute.Active = false;
+                dbInstitute.ModifiedBy = modifiedBy;
+                dbInstitute = _repoInstitute.Update(dbInstitute);
+
+                result.IsSuccess = true;
+
+                if (dbInstitute != null)
+                {
+                    result.ReturnId = dbInstitute.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error Log: AddInstitute:" + ex.Message);
+                result.IsSuccess = false;
+                result.ReturnId = 0;
+                result.Error = ex;
+            }
+            return result;
+        }
+
+
 
 
         public List<VmInstitute> GetActiveInstitutes()

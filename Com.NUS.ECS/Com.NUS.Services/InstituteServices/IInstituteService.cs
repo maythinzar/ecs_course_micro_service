@@ -9,6 +9,8 @@ namespace Com.MrIT.Services
     public interface IInstituteService
     {
         VmGenericServiceResult AddInstitute(VmInstitute vmInstitute);
+        VmGenericServiceResult UpdateInstitute(VmInstitute vmInstitute);
+        VmGenericServiceResult DeleteInstitute(long id, string modifiedBy);
         List<VmInstitute> GetActiveInstitutes();
     }
 }

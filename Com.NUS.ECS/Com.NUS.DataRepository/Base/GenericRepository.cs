@@ -37,7 +37,7 @@ namespace Com.MrIT.DataRepository
             return  entities.AsNoTracking().ToList();
         }
 
-        public  T  Get(int id)
+        public  T  Get(long id)
         {
             repoLogger.LogDebug("Get by id " + id, null);
 

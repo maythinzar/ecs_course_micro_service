@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.MrIT.DBEntities
 {
-    public partial class CareerPath : GenericEntity
+    [Table("career_path")]
+    public  class CareerPath : GenericEntity
     { 
         public long CourseCategoryId { get; set; }
         public long CareerId { get; set; }

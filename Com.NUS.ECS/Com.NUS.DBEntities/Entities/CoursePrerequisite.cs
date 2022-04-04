@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.MrIT.DBEntities
 {
-    public partial class CoursePrerequisite:GenericEntity
+    [Table("course_prerequisite")]
+    public  class CoursePrerequisite:GenericEntity
     { 
         public long CourseCategoryId { get; set; }
         public long CourseId { get; set; }

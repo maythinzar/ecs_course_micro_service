@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.MrIT.DBEntities
 {
-    public partial class Career : GenericEntity
+    [Table("career")]
+    public  class Career : GenericEntity
     {
+        
         public Career()
         {
             CareerPath = new HashSet<CareerPath>();

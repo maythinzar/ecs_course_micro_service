@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.MrIT.DBEntities
 {
-    public partial class Instructor : GenericEntity
+    [Table("instructor")]
+    public  class Instructor : GenericEntity
     {
         public Instructor()
         {

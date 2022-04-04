@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Com.MrIT.DBEntities
 {
-    public partial class Tag : GenericEntity
+    [Table("tag")]
+    public  class Tag : GenericEntity
     {
         public Tag()
         {

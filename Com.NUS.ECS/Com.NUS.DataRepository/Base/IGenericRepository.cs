@@ -11,7 +11,7 @@ namespace Com.MrIT.DataRepository
         T Update(T entity);
         void Delete(T entity);
 
-         T  Get(int id);
+         T  Get(long id);
 
         
 
