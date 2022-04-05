@@ -22,8 +22,8 @@ namespace Com.MrIT.DBEntities
         public long CourseCategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal? AverageRating { get; set; }
-        public int? DurationInDay { get; set; }
+        public decimal AverageRating { get; set; }
+        public int DurationInDay { get; set; }
 
         public virtual CourseCategory CourseCategory { get; set; }
         public virtual CourseType CourseType { get; set; }

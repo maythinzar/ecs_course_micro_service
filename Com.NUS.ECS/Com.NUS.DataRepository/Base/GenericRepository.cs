@@ -59,11 +59,8 @@ namespace Com.MrIT.DataRepository
 
         public void Commit()
         {
-            this.DbContext.SaveChanges();
-
-        }
-
-
+            this.DbContext.SaveChanges(); 
+        } 
 
         public T Add(T entity)
         {

@@ -51,7 +51,7 @@ namespace Com.NUS.API.Controllers
 
 
         [HttpPost]
-        public IActionResult Post(VmInstitute institute)
+        public IActionResult Post([FromBody]VmInstitute institute)
         {
             var output = _svsInstitute.AddInstitute(institute); 
             return new JsonResult(output);

@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace Com.MrIT.DBEntities
+namespace Com.MrIT.ViewModels
 {
-    [Table("course_rating")]
-    public  class CourseRating : GenericEntity
-    { 
+    public class VmCourseRating : ViewModelItemBase
+    {
         public long CourseId { get; set; }
         public int Rating { get; set; }
         public string Username { get; set; }
         public string Review { get; set; }
 
-        public virtual Course Course { get; set; }
+        public VmCourse Course { get; set; }
+
+
     }
 }

@@ -23,7 +23,7 @@ namespace Com.MrIT.DBEntities
         public string Country { get; set; }
         public string PostalCode { get; set; }
         public string RegistrationNo { get; set; }
-        public decimal? AvgRating { get; set; }
+        public decimal AvgRating { get; set; }
 
         public virtual ICollection<Course> Course { get; set; }
         public virtual ICollection<InstituteRating> InstituteRating { get; set; }

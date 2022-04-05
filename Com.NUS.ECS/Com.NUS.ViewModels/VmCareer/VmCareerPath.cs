@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace Com.MrIT.DBEntities
+namespace Com.MrIT.ViewModels
 {
-    [Table("career_path")]
-    public  class CareerPath : GenericEntity
-    { 
+    public class VmCareerPath : ViewModelItemBase
+    {
         public long CourseCategoryId { get; set; }
         public long CareerId { get; set; }
         public bool IsMandatory { get; set; }
         public string OtherRemarks { get; set; }
         public int PathGroupNo { get; set; }
-        public virtual Career Career { get; set; }
-        public virtual CourseCategory CourseCategory { get; set; }
+        public VmCareer Career { get; set; }
+        public VmCourseCategory CourseCategory { get; set; }
+
+
     }
 }

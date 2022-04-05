@@ -15,10 +15,12 @@ namespace Com.MrIT.Services
     public class InstituteService : BaseService, IInstituteService
     {
         private readonly IInstituteRepository _repoInstitute;
+        private readonly IInstituteUserRepository _repoInstituteUser;
 
-        public InstituteService(IInstituteRepository repoInstitute)
+        public InstituteService(IInstituteRepository repoInstitute, IInstituteUserRepository repoInstituteUser)
         {
             this._repoInstitute = repoInstitute;
+            this._repoInstituteUser = repoInstituteUser;
         }
 
 
@@ -30,7 +32,8 @@ namespace Com.MrIT.Services
             {
                 var dbInstitute = new Institute();
                 Copy<VmInstitute, Institute>(vmInstitute, dbInstitute);
-
+                Guid generateGuid = Guid.NewGuid();
+                dbInstitute.Guid= generateGuid.ToString();
                 dbInstitute = _repoInstitute.Add(dbInstitute);
 
                 result.IsSuccess = true;
@@ -59,7 +62,7 @@ namespace Com.MrIT.Services
                 Copy<VmInstitute, Institute>(vmInstitute, dbInstitute);
 
                 dbInstitute = _repoInstitute.Update(dbInstitute);
-
+                _repoInstitute.Commit();
                 result.IsSuccess = true;
 
                 if (dbInstitute != null)
@@ -87,7 +90,7 @@ namespace Com.MrIT.Services
                 dbInstitute.Active = false;
                 dbInstitute.ModifiedBy = modifiedBy;
                 dbInstitute = _repoInstitute.Update(dbInstitute);
-
+                _repoInstitute.Commit();
                 result.IsSuccess = true;
 
                 if (dbInstitute != null)

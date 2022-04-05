@@ -15,8 +15,7 @@ namespace Com.MrIT.DBEntities
         }
          
         public string Name { get; set; }
-        public string CourseCategorycol { get; set; }
-
+       
         public virtual ICollection<CareerPath> CareerPath { get; set; }
         public virtual ICollection<Course> Course { get; set; }
         public virtual ICollection<CoursePrerequisite> CoursePrerequisite { get; set; }
