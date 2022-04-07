@@ -9,6 +9,6 @@ namespace Com.MrIT.DataRepository
 {
     public interface ICareerRepository : IGenericRepository<Career>
     {
-
+        long GetIdByName(string career);
     }
 }

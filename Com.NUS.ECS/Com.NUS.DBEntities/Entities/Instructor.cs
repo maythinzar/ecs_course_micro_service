@@ -20,5 +20,7 @@ namespace Com.MrIT.DBEntities
 
         public virtual Institute Institute { get; set; }
         public virtual ICollection<CourseInstructor> CourseInstructor { get; set; }
+
+
     }
 }

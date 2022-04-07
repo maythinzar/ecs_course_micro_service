@@ -12,11 +12,12 @@ namespace Com.NUS.TestXUnit
     {
        
         public readonly Mock<IInstituteRepository> _repoInstituteMock = new Mock<IInstituteRepository>();
+        public readonly Mock<IInstituteUserRepository> _repoInstituteUserMock = new Mock<IInstituteUserRepository>();
 
         [Fact]
         public void DoesntSaveToDatabaseWhenInvalidSomething()
         {
-            InstituteService instituteService = new InstituteService(_repoInstituteMock.Object);
+            InstituteService instituteService = new InstituteService(_repoInstituteMock.Object, _repoInstituteUserMock.Object);
 
             var vmResult = instituteService.AddInstitute(null);
 
@@ -29,7 +30,7 @@ namespace Com.NUS.TestXUnit
         {
             var vmInstitute = new VmInstitute{ Name = "Foo"};
             
-            InstituteService instituteService = new InstituteService(_repoInstituteMock.Object);
+            InstituteService instituteService = new InstituteService(_repoInstituteMock.Object, _repoInstituteUserMock.Object);
             var dbInstitute = new Institute();
             Copy<VmInstitute, Institute>(vmInstitute, dbInstitute);
             _repoInstituteMock.Setup(x => x.Add(dbInstitute)).Returns(dbInstitute);

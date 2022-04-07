@@ -8,10 +8,10 @@ namespace Com.MrIT.DBEntities
     public  class CourseInstructor : GenericEntity
     { 
         public long CourseId { get; set; }
-        public long InstituteId { get; set; }
+        public long InstructorId { get; set; }
         public string Role { get; set; }
 
         public virtual Course Course { get; set; }
-        public virtual Instructor Institute { get; set; }
+        public virtual Instructor Instructor { get; set; }
     }
 }

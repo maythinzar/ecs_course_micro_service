@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Com.MrIT.DataRepository
 {
     public interface ITagRepository : IGenericRepository<Tag>
-    {
-
+    { 
+        long GetIdByName(string tag);
     }
 }

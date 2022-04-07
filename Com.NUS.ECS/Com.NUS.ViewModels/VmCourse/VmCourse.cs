@@ -11,6 +11,7 @@ namespace Com.MrIT.ViewModels
         public long InstituteId { get; set; }
         public long CourseTypeId { get; set; }
         public long CourseCategoryId { get; set; }
+        public string SelectedCategory { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal AverageRating { get; set; }
@@ -19,11 +20,15 @@ namespace Com.MrIT.ViewModels
         public VmCourseCategory CourseCategory { get; set; }
         public VmCourseType CourseType { get; set; }
         public VmInstitute Institute { get; set; }
-        public List<VmCourseCareer> CourseCareer { get; set; }
-        public List<VmCourseInstructor> CourseInstructor { get; set; }
-        public List<VmCoursePrerequisite> CoursePrerequisite { get; set; }
-        public List<VmCourseRating> CourseRating { get; set; }
-        public List<VmCourseTag> CourseTag { get; set; }
+        public List<VmCourseCareer> CourseCareers { get; set; }
+        public List<VmCourseInstructor> CourseInstructors { get; set; }
+        public List<VmCoursePrerequisite> CoursePrerequisites { get; set; }
+        public List<VmCourseRating> CourseRatings { get; set; }
+        public List<VmCourseTag> CourseTags { get; set; }
+
+        public List<string> SelectedTag { get; set; }
+
+        public List<string> SelectedCareer { get; set; }
 
 
     }

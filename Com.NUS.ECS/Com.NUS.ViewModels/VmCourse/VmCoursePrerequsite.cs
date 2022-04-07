@@ -8,6 +8,7 @@ namespace Com.MrIT.ViewModels
     public class VmCoursePrerequisite : ViewModelItemBase
     {
         public long CourseCategoryId { get; set; }
+        public string CourseCategoryName { get; set; }
         public long CourseId { get; set; }
         public bool IsMandatory { get; set; }
         public string OtherRemarks { get; set; }
