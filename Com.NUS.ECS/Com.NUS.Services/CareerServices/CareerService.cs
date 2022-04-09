@@ -60,7 +60,7 @@ namespace Com.MrIT.Services
                 Copy<VmCareer, Career>(vmCareer, dbCareer);
 
                 dbCareer = _repoCareer.Update(dbCareer);
-                _repoCareer.Commit();
+                _repoCareer.Commit(); 
                 result.IsSuccess = true;
 
                 if (dbCareer != null)
