@@ -30,8 +30,7 @@ namespace Com.MrIT.Services
             {
                 var dbCareer = new Career();
                 Copy<VmCareer, Career>(vmCareer, dbCareer);
-                Guid generateGuid = Guid.NewGuid();
-                dbCareer.Guid = generateGuid.ToString();
+                 
                 dbCareer = _repoCareer.Add(dbCareer);
                 _repoCareer.Commit();
                 result.IsSuccess = true;
