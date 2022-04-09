@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo restore started  on `date`
+      - dotnet restore Com.NUS.ECS/Com.NUS.API/Com.NUS.API.csproj
+  build:
+    commands:
+      - echo Build stared  on `date`
+      - dotnet publish -c debug -o ./build_output Com.NUS.ECS/Com.NUS.API/Com.NUS.API.csproj
+       
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'build_output'
