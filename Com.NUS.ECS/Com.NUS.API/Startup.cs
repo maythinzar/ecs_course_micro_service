@@ -96,7 +96,7 @@ namespace Com.NUS.API
                 app.UseDeveloperExceptionPage();
             }
 
-            loggerFactory.AddFile("Logs/mylog-{Date}.txt");
+            //loggerFactory.AddFile("Logs/mylog-{Date}.txt");
 
             app.UseHttpsRedirection();
 
